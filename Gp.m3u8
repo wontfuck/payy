@@ -1,0 +1,12 @@
+#EXTM3U
+#EXT-X-VERSION:6
+#EXT-X-STREAM-INF:BANDWIDTH=5554000,RESOLUTION=1920x1080,CODECS="avc1.4D401F, mp4a.40.2"
+https://dornatoken.secure.footprint.net/token=nva=1662302415~dirs=2~ip=0.0.0.0~data=RsvggiUCIw1IQw0h%252B3bDwf%252Bd%252Fi4o8t0pXpKD6TOTu2szapBEcRPNSKjVZPnz%252FEg4~token=026f443e722ea6afaeffb/hls/ipfmix/4.m3u8?start=0&
+#EXT-X-STREAM-INF:BANDWIDTH=2554000,RESOLUTION=1280x720,CODECS="avc1.4D401F, mp4a.40.2"
+https://dornatoken.secure.footprint.net/token=nva=1662302415~dirs=2~ip=0.0.0.0~data=RsvggiUCIw1IQw0h%252B3bDwf%252Bd%252Fi4o8t0pXpKD6TOTu2szapBEcRPNSKjVZPnz%252FEg4~token=026f443e722ea6afaeffb/hls/ipfmix/3.m3u8?start=0&
+#EXT-X-STREAM-INF:BANDWIDTH=1578000,RESOLUTION=960x540,CODECS="avc1.4D401F, mp4a.40.2"
+https://dornatoken.secure.footprint.net/token=nva=1662302415~dirs=2~ip=0.0.0.0~data=RsvggiUCIw1IQw0h%252B3bDwf%252Bd%252Fi4o8t0pXpKD6TOTu2szapBEcRPNSKjVZPnz%252FEg4~token=026f443e722ea6afaeffb/hls/ipfmix/2.m3u8?start=0&
+#EXT-X-STREAM-INF:BANDWIDTH=1214000,RESOLUTION=640x360,CODECS="avc1.4D401F, mp4a.40.2"
+https://dornatoken.secure.footprint.net/token=nva=1662302415~dirs=2~ip=0.0.0.0~data=RsvggiUCIw1IQw0h%252B3bDwf%252Bd%252Fi4o8t0pXpKD6TOTu2szapBEcRPNSKjVZPnz%252FEg4~token=026f443e722ea6afaeffb/hls/ipfmix/1.m3u8?start=0&
+#EXT-X-STREAM-INF:BANDWIDTH=794000,RESOLUTION=640x360,CODECS="avc1.4D401F, mp4a.40.2"
+https://dornatoken.secure.footprint.net/token=nva=1662302415~dirs=2~ip=0.0.0.0~data=RsvggiUCIw1IQw0h%252B3bDwf%252Bd%252Fi4o8t0pXpKD6TOTu2szapBEcRPNSKjVZPnz%252FEg4~token=026f443e722ea6afaeffb/hls/ipfmix/0.m3u8?start=0&
