@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nonton SonyTen2</title>
+    <!-- Pemetaan -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="robots" content="noindex">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="referrer" content="no-referrer">
+        <meta name="msapplication-TileColor" content="#3f51b5">
+    <!-- Functional & CSS -->
+        <script src="https://cdn.jsdelivr.net/npm/p2p-media-loader-core@latest/build/p2p-media-loader-core.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/p2p-media-loader-hlsjs@latest/build/p2p-media-loader-hlsjs.min.js"></script>
+        <link rel='stylesheet' href='https://wontf.my.id/plyr.css'>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+        <script src="https://wontf.my.id/plyr.js"></script>
+
+        
+</head>
+<style>
+    body {
+        width:100%;
+        height: 100%;
+        font-family: Poppins;
+        display:block;
+        position: absolute;
+        padding: 0px;
+        margin: 0px;
+        background: #000;
+        overflow: hidden;
+    }
+    video{
+        width:100%;
+        height: 100%;
+        display:inline-block;
+        -webkit-user-select:none;
+        -moz-user-select:none;
+        -ms-user-select:none;
+        user-select:none;
+    }
+</style>
+
+<body>
+<video id="player" crossOrigin="anonymous" preload="none" controls allowFullScreen webkitallowfullscreen mozallowfullscreen></video>
+</body>
+
+</script>
+    <!--Import Scripts-->
+    <script src="https://wontf.my.id/shaka-player.compiled.js"></script>
+    <script src="https://unpkg.com/plyr@3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js"></script>
+    <!--Initialize Plyr-->
+    <script>
+(function () {
+        var video = document.querySelector('#player');
+        initApp();
+
+        function initApp() {
+            shaka.polyfill.installAll();
+            if (shaka.Player.isBrowserSupported()) {
+                initPlayer();
+            } else {
+                console.error('Browser not supported!');
+            }
+        }
+        
+        function initPlayer() {
+            var video = document.querySelector('#player');
+            var player = new shaka.Player(video);
+            player.addEventListener('error', onErrorEvent);
+            
+        player.configure({
+          drm: {
+            clearKeys:{ 
+                //'ce17264b317db108f19cdc11aa1a9e66': 'a21188aee8fc5c56d016fcffcc6b2295'
+            }
+          }
+        });
+
+            player.load('https://d25tgymtnqzu8s.cloudfront.net/smil:tv2/manifest.mpd') // source
+                .then(function () {
+
+                    var variantTracks = player.getVariantTracks();
+                    var bitrates = [];
+                    variantTracks.sort(function (a, b) {
+                        return a.bandwidth - b.bandwidth;
+                    });
+                    var groupAudios = [];
+                    for (var i = 0; i <= variantTracks.length - 1; i++) {
+                        if (groupAudios.includes(variantTracks[i].audioId)) {
+                            break;
+                        }
+                        groupAudios.push(variantTracks[i].audioId);
+                    }
+                    for (var i = groupAudios.length - 1; i <= variantTracks.length - 1; i += groupAudios.length) {
+                        bitrates.push(variantTracks[i]);
+                    }
+
+                    new Plyr(video, {
+                        controls: ["play-large", "pause-large", "play", "caption", "mute", "volume", "live", "settings", "pip", "fullscreen"],
+                        settings: ['quality', 'speed', 'loop'],
+                        quality: {
+                            options: bitrates.map(j => j.height),
+                            forced: true,
+                            onChange: function (newQuality) {
+                                player.configure({
+                                    abr: {
+                                        enabled: false
+                                    }
+                                })
+                                
+                                var tracks = player.getVariantTracks().filter(tk => tk.height === newQuality)
+                                player.selectVariantTrack(tracks[0], true);
+                            }
+                        }
+                    });
+                });
+        }
+
+        function onErrorEvent(event) {
+            console.error(event.detail);
+        }
+})();
+
+
+    </script>
+
+  </body>
+</html>
